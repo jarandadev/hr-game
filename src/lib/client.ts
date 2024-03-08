@@ -5,11 +5,11 @@ export default function socketClient() {
   const socket = io(`:${SOCKET_PORT}`, { 
     path: "/api/socket", 
     addTrailingSlash: false,
-    transports: ["websocket"],
-   })
+    transports: ["websocket"]
+  })
 
-  socket.on("connect_error", async (error) => {
-    console.error("Socket connection error", error)
+  socket.on("connect_error", async () => {
+    await fetch("/api/socket")
   })
 
   return socket
