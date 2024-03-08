@@ -5,7 +5,7 @@ export default function socketClient() {
   const socket = io(`:${SOCKET_PORT}`, { 
     path: "/api/socket", 
     addTrailingSlash: false,
-
+    transports: ["websocket", "polling"],
   })
 
   socket.on("connect_error", async () => {
